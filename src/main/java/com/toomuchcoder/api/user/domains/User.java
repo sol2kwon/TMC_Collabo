@@ -36,19 +36,17 @@ public class User {
     @Id @Column (name = "userid")
     @GeneratedValue private long userid;
     @Column private @NotNull String username;
+    @Column private @NotNull String nickname;
     @Column private @NotNull String name;
     @Column private @NotNull String password;
     @Column private @NotNull String birth;
     @Column private @NotNull String phone;
-    @Column(name = "time") private @NotNull String time;
+    @Column private String token;//토큰
+    @Column(name = "time") private String time;
 
 
     @OneToMany(mappedBy = "user")
     List<Meal> meals = new ArrayList<>();
-
-    @OneToMany(mappedBy = "user")
-    List<Condition>conditions = new ArrayList<>();
-
 
     @OneToMany(mappedBy = "user")
     List<Addmeal> addmeals = new ArrayList<>();

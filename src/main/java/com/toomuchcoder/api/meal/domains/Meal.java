@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * packageName: com.toomuchcoder.api.meal.domains
@@ -35,6 +37,9 @@ public class Meal {
     @ManyToOne(fetch =FetchType.LAZY)
         @JoinColumn(name = "userid")
     User user;
+
+    @OneToMany(mappedBy = "user")
+    List<Meal> meals = new ArrayList<>();
 
 
 

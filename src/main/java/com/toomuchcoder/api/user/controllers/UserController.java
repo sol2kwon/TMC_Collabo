@@ -29,8 +29,10 @@ import java.util.Optional;
  **/
 @CrossOrigin(origins = "*",allowedHeaders = "*")//나중에 아마존에서 발급하면 체인지함
 @Api(tags = "users")
+@RequestMapping("/users")
 @RestController
 @RequiredArgsConstructor
+
 public class UserController {
     private final UserService service;
     private final ModelMapper modelMapper;// 맵 1:1,필터 ??,리듀서 1:다
