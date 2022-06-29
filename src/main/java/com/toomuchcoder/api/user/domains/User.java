@@ -2,7 +2,6 @@ package com.toomuchcoder.api.user.domains;
 
 import com.toomuchcoder.api.addmeal.domains.Addmeal;
 import com.toomuchcoder.api.comment.domains.Comment;
-import com.toomuchcoder.api.condition.domains.Condition;
 import com.toomuchcoder.api.meal.domains.Meal;
 import com.toomuchcoder.api.post.domains.Post;
 import lombok.*;
@@ -10,6 +9,7 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -42,7 +42,7 @@ public class User {
     @Column private @NotNull String birth;
     @Column private @NotNull String phone;
     @Column private String token;//토큰
-    @Column(name = "time") private String time;
+
 
 
     @OneToMany(mappedBy = "user")

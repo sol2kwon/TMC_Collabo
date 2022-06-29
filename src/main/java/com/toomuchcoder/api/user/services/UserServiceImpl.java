@@ -102,7 +102,6 @@ public class UserServiceImpl implements UserService {
                     .name(user.getName())
                     .birth(user.getBirth())
                     .phone(user.getPhone())
-                    .time(user.getTime())
                     .password(encoder.encode(user.getPassword()))
                     .roles(list).build());
             result = "SUCCESS";
