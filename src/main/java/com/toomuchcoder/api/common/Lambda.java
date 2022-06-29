@@ -87,4 +87,6 @@ public class Lambda {
         Supplier<String> f = () -> string(LocalDate.now());
         return f.get();
     }
+
+
 }
