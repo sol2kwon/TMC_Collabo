@@ -22,7 +22,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * =============================================
  * 2022-06-07         solyikwon      최초 생성
  **/
-@Configuration
+@Configuration//한개만 존재해야함
 public class AuthConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     public PasswordEncoder passwordEncoder(){
