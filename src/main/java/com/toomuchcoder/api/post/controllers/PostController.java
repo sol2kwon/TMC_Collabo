@@ -50,13 +50,14 @@ public class PostController {
     public ResponseEntity<Messenger> count() {
         return ResponseEntity.ok(service.count());
     }
+
     @DeleteMapping("/delete")
     public ResponseEntity <Messenger> delete(Post post) {
         return ResponseEntity.ok(service.delete(post));
 
     }
     @PostMapping("/post")
-    public  ResponseEntity<Messenger> save11(@ApiParam("Post create")@RequestBody Post post) {
+    public  ResponseEntity<Messenger> save(@ApiParam("Post create")@RequestBody Post post) {
         System.out.println("게시글 작성:"+post.toString());//확인하고 지우기.
         return ResponseEntity.ok(service.save(post));
     }

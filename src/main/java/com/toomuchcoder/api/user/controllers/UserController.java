@@ -92,7 +92,7 @@ public class UserController {
             @ApiResponse(code = 403, message = "승인거절"),
             @ApiResponse(code = 422, message = "중복된 ID")
     })
-    public  ResponseEntity<Messenger> save(@ApiParam("Join user")@RequestBody UserDTO user) {
+    public ResponseEntity<Messenger> save(@ApiParam("Join user")@RequestBody UserDTO user) {
         System.out.println("회원가입정보:"+user.toString());//확인하고 지우기.
         return ResponseEntity.ok(service.save(user));
     }

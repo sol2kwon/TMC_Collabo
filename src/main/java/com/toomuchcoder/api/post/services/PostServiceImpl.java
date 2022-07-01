@@ -45,19 +45,19 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public Messenger count() {
-
         return Messenger.builder().message(string(postRepository.count())).build();
     }
 
     @Override
     public Messenger delete(Post post) {
-        return Messenger.builder().message("SUCCESS").build();
+        postRepository.delete(post);
+        return Messenger.builder().message("게시글 삭제 완료").build();
     }
 
     @Override
     public Messenger save(Post post) {
         postRepository.save(post);
-        return Messenger.builder().message("SUCCESS").build();
+        return Messenger.builder().message("게시글 작성 완료").build();
     }
 
     @Override
@@ -68,7 +68,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public Messenger update(Post post) {
-
-        return Messenger.builder().message("SUCCESS").build();
+        postRepository.update(post);//왜 업데이트가 없을까요?
+        return Messenger.builder().message("업데이트 완료").build();
     }
 }
