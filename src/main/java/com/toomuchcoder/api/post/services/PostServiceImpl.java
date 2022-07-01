@@ -4,6 +4,8 @@ import com.toomuchcoder.api.auth.domain.Messenger;
 import com.toomuchcoder.api.post.domains.Post;
 import com.toomuchcoder.api.post.domains.PostDTO;
 import com.toomuchcoder.api.post.repositories.PostRepository;
+import com.toomuchcoder.api.user.domains.User;
+import com.toomuchcoder.api.user.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -26,40 +28,47 @@ import static com.toomuchcoder.api.common.Lambda.string;
 @Service
 @RequiredArgsConstructor
 public class PostServiceImpl implements PostService {
-    private final PostRepository repository;
+    private final PostRepository postRepository;
+    private final UserRepository userRepository;
 
     @Override
     public List<Post> findAll() {
-        return repository.findAll();
+
+        return postRepository.findAll();
     }
 
     @Override
     public List<Post> findAll(Sort sort) {
-        return repository.findAll(sort);
+
+        return postRepository.findAll(sort);
     }
 
     @Override
     public Messenger count() {
-        return Messenger.builder().message(string(repository.count())).build();
+
+        return Messenger.builder().message(string(postRepository.count())).build();
     }
 
     @Override
     public Messenger delete(Post post) {
-        return Messenger.builder().message("").build();
+        return Messenger.builder().message("SUCCESS").build();
     }
 
     @Override
-    public Messenger save(PostDTO post) {
-        return null;
+    public Messenger save(Post post) {
+        postRepository.save(post);
+        return Messenger.builder().message("SUCCESS").build();
     }
 
     @Override
     public Optional<Post> findById(String postid) {
-        return repository.findById(0L);
+
+        return postRepository.findById(0L);
     }
 
     @Override
     public Messenger update(Post post) {
-        return Messenger.builder().message("업데이트 완료").build();
+
+        return Messenger.builder().message("SUCCESS").build();
     }
 }

@@ -29,7 +29,7 @@ public interface PostService {
 
     Messenger delete(Post post);
 
-    Messenger save(PostDTO post);
+    Messenger save(Post post);
 
     Optional<Post> findById(String postid);
 

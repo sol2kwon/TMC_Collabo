@@ -56,8 +56,8 @@ public class PostController {
 
     }
     @PostMapping("/post")
-    public  ResponseEntity<Messenger> save(@ApiParam("Join user")@RequestBody PostDTO post) {
-        System.out.println("회원가입정보:"+post.toString());//확인하고 지우기.
+    public  ResponseEntity<Messenger> save11(@ApiParam("Post create")@RequestBody Post post) {
+        System.out.println("게시글 작성:"+post.toString());//확인하고 지우기.
         return ResponseEntity.ok(service.save(post));
     }
     @GetMapping("/findById/{postid}")
