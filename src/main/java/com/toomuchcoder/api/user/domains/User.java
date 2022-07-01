@@ -1,5 +1,6 @@
 package com.toomuchcoder.api.user.domains;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.toomuchcoder.api.addmeal.domains.Addmeal;
 import com.toomuchcoder.api.comment.domains.Comment;
 import com.toomuchcoder.api.meal.domains.Meal;
@@ -54,8 +55,9 @@ public class User {
     @OneToMany(mappedBy = "user")
     List<Comment> comments = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user")
-    List<Post> posts = new ArrayList<>();
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY )
+    //@JsonIgnoreProperties({"user"})
+    private List<Post> posts = new ArrayList<>();
 
     @ElementCollection(fetch = FetchType.EAGER)
     public List<Role>roles;

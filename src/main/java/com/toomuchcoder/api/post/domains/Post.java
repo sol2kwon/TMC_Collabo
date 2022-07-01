@@ -35,6 +35,7 @@ public class Post {
     @Column private @NotNull String likes;
 
 
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userid")
     User user;
