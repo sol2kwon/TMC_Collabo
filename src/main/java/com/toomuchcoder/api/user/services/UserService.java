@@ -43,10 +43,10 @@ public interface UserService {
 
     UserDTO login(UserDTO paramUser);
 
-    Messenger update(User user);
 
     //커스텀
     Optional<User> findByUsername(String username);
+    Messenger update(User user);
 
     Messenger logout();
 

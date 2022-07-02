@@ -81,6 +81,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Messenger update(User user) {
+        repository.update(user);
         return Messenger.builder().message("업데이트 완료").build();
 
     }
