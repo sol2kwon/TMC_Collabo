@@ -31,8 +31,8 @@ public class Comment {
     @Column(name = "commentid")
     @GeneratedValue
     private Long commentid;
-    @Column private @NotNull String content;
-    @Column private @NotNull String time;
+    @Column private  String comment;
+    @Column private @NotNull String date;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userid")

@@ -29,10 +29,12 @@ import javax.validation.constraints.NotNull;
 public class Post {
     @Id
     @Column(name = "postid")
-    @GeneratedValue private Long commentid;
+    @GeneratedValue private Long postid;
     @Column private @NotNull String pimage;
-    @Column private @NotNull String time;
-    @Column private @NotNull String likes;
+    @Column private  String ptext;
+    @Column private  String likes;
+    @Column private @NotNull String date;
+
 
 
 

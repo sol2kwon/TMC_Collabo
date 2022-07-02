@@ -25,9 +25,8 @@ import java.util.List;
 @Data
 public class PostDTO {
     @ApiModelProperty(position = 1) private long commentid;
-    @ApiModelProperty(position = 2) String pimage;
-    @ApiModelProperty(position = 3) String likes;
-    @ApiModelProperty(position = 4) private String date;
+    @ApiModelProperty(position = 2) private String comment;
+    @ApiModelProperty(position = 3) private String date;
 
 
 
