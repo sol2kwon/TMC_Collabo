@@ -44,7 +44,7 @@ public class CommentController {
     }
 
     @PostMapping("/comment")
-    public ResponseEntity<Messenger> save(@ApiParam("Comment comment")@RequestBody Comment comment) {
+    public ResponseEntity<Messenger> save(@ApiParam("Comment 작성 완료")@RequestBody Comment comment) {
         System.out.println("comment check:"+comment.toString());//확인하고 지우기.
         return ResponseEntity.ok(service.save(comment));
     }

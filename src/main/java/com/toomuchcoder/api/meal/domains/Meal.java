@@ -31,8 +31,8 @@ import java.util.List;
 public class Meal {
     @Id @Column(name = "mealid")
     @GeneratedValue private Long mealid;
-    @Column private String timestamp;
     @Column private String mealimages;
+    @Column private String date;
 
     @ManyToOne(fetch =FetchType.LAZY)
         @JoinColumn(name = "userid")
