@@ -24,7 +24,7 @@ import java.util.Optional;
  **/
 
 interface UserCustomRepository {
-
+/**
     @Modifying//1. 사용자의 비밀번호와 휴대폰 번호를 수정하시오
     @Query(value="update User u set u.password = :password, u.phone = :phone where u.userId = :userId", nativeQuery = true)
     int update(@Param("password") String password, @Param("phone") String phone);
@@ -35,13 +35,14 @@ interface UserCustomRepository {
 
     @Query(value = "")
     String login(User user);
+ */
 
 
 }
 @Repository
 public interface UserRepository extends JpaRepository<User,Long> {
     Optional<User> findByUsername(String username);
-    Messenger update(User user);
+    //Messenger update(User user);
 
 }
 

@@ -19,7 +19,6 @@ import org.springframework.stereotype.Component;
 public class CommentDTO {
     @ApiModelProperty(position = 1) private long commentid;
     @ApiModelProperty(position = 2) String pimage;
-    @ApiModelProperty(position = 3) String likes;
-    @ApiModelProperty(position = 4) private String date;
+    @ApiModelProperty(position = 3) private String date;
 
 }
