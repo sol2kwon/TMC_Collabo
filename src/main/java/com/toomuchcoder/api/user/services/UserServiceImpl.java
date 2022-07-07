@@ -3,11 +3,13 @@ package com.toomuchcoder.api.user.services;
 import com.toomuchcoder.api.auth.config.AuthProvider;
 import com.toomuchcoder.api.auth.domain.Messenger;
 import com.toomuchcoder.api.auth.exeption.SecurityRuntimeException;
+import com.toomuchcoder.api.common.Blank.StringUtils;
 import com.toomuchcoder.api.user.domains.Role;
 import com.toomuchcoder.api.user.domains.User;
 import com.toomuchcoder.api.user.domains.UserDTO;
 import com.toomuchcoder.api.user.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.security.SecurityUtil;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,6 +19,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -38,7 +41,7 @@ import static com.toomuchcoder.api.common.Lambda.string;
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
-    private final UserRepository repository;
+    private final UserRepository repository ;
     private final PasswordEncoder encoder;
     private final AuthProvider provider;//토큰 사용
     private final ModelMapper modelMapper;//맵핑
@@ -71,29 +74,45 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findAll() {
         return repository.findAll();
-    }
+    } //회원조회
 
     @Override
     public Messenger count() {
 
         return Messenger.builder().message(string(repository.count())).build();
+    }//회원수 조회
+
+    @Override @Transactional
+    public void update(final UserDTO user) throws Exception{
+        Optional<User> basicUser = repository.findByUsername(user.getUsername());
+        User userdb = basicUser.get();
+        if(StringUtils.isNotBlank(user.getName())) user.setName(user.getName());
+        if(StringUtils.isNotBlank(user.getBirth())) user.setBirth(user.getBirth());
+        if(StringUtils.isNotBlank(user.getNickname())&& !repository.existsByNickname(user.getNickname())) user.setNickname(user.getNickname());
+        if(StringUtils.isNotBlank(user.getPhone())&& !repository.existsByPhone(user.getPhone())) user.setPhone(user.getPhone());
+        if(StringUtils.isNotBlank(user.getPassword())) user.setPassword(user.getPassword());
+        if(StringUtils.isNotBlank(user.getUsername())&& !repository.existsByUsername(user.getUsername())) user.setUsername(user.getUsername());
+        repository.save(userdb);
+    }
+//회원 수정
+    @Override
+    public void delete(String username) throws Exception {
+        Optional<User> basicUser = repository.findByUsername(username);
+
+        repository.delete(basicUser.get());
+
+
     }
 
     @Override
-    public Messenger update(User user) {
-        //repository.update(user);
-        return Messenger.builder().message("업데이트 완료").build();
-
-    }
-
-    @Override
-    public Messenger delete(User user) {
-        repository.delete(user);
-        return Messenger.builder().message("").build();
+    public Messenger deleteAll() {
+        repository.deleteAll();
+        return Messenger.builder().message("전체삭제").build();
     }
 
     @Override
     public Messenger save(UserDTO user) {
+        System.out.println("서비스로 전달된 회원가입 정보: "+user.toString());
         String result = "";
         if (repository.findByUsername(user.getUsername()).isEmpty()) {
             List<Role> list = new ArrayList<>();
@@ -103,6 +122,7 @@ public class UserServiceImpl implements UserService {
                     .name(user.getName())
                     .birth(user.getBirth())
                     .phone(user.getPhone())
+                    .nickname(user.getNickname())
                     .password(encoder.encode(user.getPassword()))
                     .roles(list).build());
             result = "SUCCESS";

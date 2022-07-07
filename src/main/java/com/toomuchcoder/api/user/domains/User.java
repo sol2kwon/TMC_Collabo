@@ -44,8 +44,6 @@ public class User {
     @Column private @NotNull String phone;
     @Column private String token;//토큰
 
-
-
     @OneToMany(mappedBy = "user")
     List<Meal> meals = new ArrayList<>();
 

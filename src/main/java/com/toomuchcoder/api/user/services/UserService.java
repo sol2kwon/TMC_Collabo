@@ -9,6 +9,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,6 +36,11 @@ public interface UserService {
 
     Messenger delete(User user);
 
+    @Transactional
+    Optional<User> delete(UserDTO user) throws Exception;
+
+    Messenger deleteAll();
+
     Messenger save(UserDTO user);
 
     Optional<User> findById(String userid);
@@ -43,12 +49,14 @@ public interface UserService {
 
     UserDTO login(UserDTO paramUser);
 
-
     //커스텀
     Optional<User> findByUsername(String username);
-    Messenger update(User user);
+    void update(UserDTO user) throws Exception;
 
     Messenger logout();
+
+
+
 
 
 

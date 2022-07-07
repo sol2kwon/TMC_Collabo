@@ -74,15 +74,20 @@ public class UserController {
         return ResponseEntity.ok(service.count());
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<Messenger> update(@RequestBody User user) {
-        return ResponseEntity.ok(service.update(user));
+
+    @PatchMapping(value = "/update") @ResponseBody
+    public void update(@RequestBody UserDTO user) throws Exception {
+        service.update(user);
     }
 
-    @DeleteMapping("/delete")
-    public ResponseEntity<Messenger> delete(User user) {
+    @DeleteMapping("/delete/{userid}")
+    public ResponseEntity<Messenger> delete(@PathVariable("D") User user) {
         return ResponseEntity.ok(service.delete(user));
+    }
 
+    @DeleteMapping("/deleteAll")
+    public ResponseEntity<Messenger> deleteAll() {
+        return ResponseEntity.ok(service.deleteAll());
     }
 
     @PostMapping("/join")
