@@ -38,7 +38,7 @@ public class User {
     @GeneratedValue private long userid;
     @Column private @NotNull String username;
     @Column private @NotNull String nickname;
-    @Column private @NotNull String name;
+    @Column (unique = true) private @NotNull String name;
     @Column private @NotNull String password;
     @Column private @NotNull String birth;
     @Column private @NotNull String phone;

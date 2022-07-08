@@ -18,8 +18,6 @@ public class LoginRunnerException extends RuntimeException {
         super();
     }
 
-    public LoginRunnerException(String msg) {
-        super(msg);
-    }
+    public LoginRunnerException(String msg) {super(msg);}
 }
 

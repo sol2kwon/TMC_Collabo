@@ -2,9 +2,7 @@ package com.toomuchcoder.api.post.services;
 
 import com.toomuchcoder.api.auth.domain.Messenger;
 import com.toomuchcoder.api.post.domains.Post;
-import com.toomuchcoder.api.post.domains.PostDTO;
 import com.toomuchcoder.api.post.repositories.PostRepository;
-import com.toomuchcoder.api.user.domains.User;
 import com.toomuchcoder.api.user.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
@@ -12,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import static com.toomuchcoder.api.common.Lambda.string;
+import static com.toomuchcoder.api.common.Box.Lambda.string;
 
 /**
  * packageName: com.toomuchcoder.api.post.services

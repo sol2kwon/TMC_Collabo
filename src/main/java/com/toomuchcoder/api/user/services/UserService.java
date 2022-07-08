@@ -39,7 +39,6 @@ public interface UserService {
 
     Messenger save(UserDTO user);
 
-    Optional<User> findById(String userid);
     Optional<User> findByToken(UserDTO user);
 
     Messenger existsById(String userid);

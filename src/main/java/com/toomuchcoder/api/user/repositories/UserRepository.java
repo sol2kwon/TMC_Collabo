@@ -39,7 +39,7 @@ interface UserCustomRepository {
  */
 
 @Query(value = "select u.username from User u where u.name = :name and u.phone = :phone")
-String findUsername(@Param("name") String name, @Param("email") String email);
+String findUsername(@Param("name") String name, @Param("phone") String phone);
 
 }
 @Repository

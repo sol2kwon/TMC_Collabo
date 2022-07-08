@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-import static com.toomuchcoder.api.common.Lambda.string;
+import static com.toomuchcoder.api.common.Box.Lambda.string;
 
 /**
  * packageName: com.toomuchcoder.api.condition.services

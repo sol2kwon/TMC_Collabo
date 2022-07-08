@@ -1,4 +1,4 @@
-package com.toomuchcoder.api.common;
+package com.toomuchcoder.api.common.Box;
 
 import java.io.File;
 import java.time.LocalDate;

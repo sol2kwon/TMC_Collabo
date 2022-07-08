@@ -104,12 +104,6 @@ public class UserController {
         return ResponseEntity.ok(service.save(user));
     }
 
-    @GetMapping("/findById/{userid}")
-    public ResponseEntity<Optional<User>> findById(@PathVariable String userid) {
-
-        return ResponseEntity.ok(service.findById(userid));
-    }
-
     @GetMapping("/existsById/{userid}")
     public ResponseEntity<Messenger> existsById(@PathVariable String userid) {
         return ResponseEntity.ok(service.existsById(userid));

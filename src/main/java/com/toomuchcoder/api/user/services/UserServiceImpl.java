@@ -21,8 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static com.toomuchcoder.api.common.Lambda.longParse;
-import static com.toomuchcoder.api.common.Lambda.string;
+import static com.toomuchcoder.api.common.Box.Lambda.longParse;
+import static com.toomuchcoder.api.common.Box.Lambda.string;
 
 /**
  * packageName: com.toomuchcoder.api.user.service
@@ -126,11 +126,6 @@ public class UserServiceImpl implements UserService {
         return Messenger.builder().message(result).build();
     }//회원가입
 
-    @Override
-    public Optional<User> findById(String userid) {
-
-        return repository.findById(0L);
-    }
 
     @Override
     public Optional<User> findByToken(UserDTO user) {

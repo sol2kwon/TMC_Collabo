@@ -7,7 +7,7 @@ import com.toomuchcoder.api.comment.repositories.CommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import static com.toomuchcoder.api.common.Lambda.string;
+import static com.toomuchcoder.api.common.Box.Lambda.string;
 
 /**
  * packageName: com.toomuchcoder.api.comment.services
