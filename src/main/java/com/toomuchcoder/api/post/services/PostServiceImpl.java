@@ -65,8 +65,9 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public Messenger update(Post post) {
-        //왜 업데이트가 없을까요?
-        return Messenger.builder().message("post 업데이트 완료").build();
+    public Messenger update(Long postid) {
+        return null;
     }
+
+
 }

@@ -33,5 +33,5 @@ public interface PostService {
 
     Optional<Post> findById(String postid);
 
-    Messenger update(Post post);
+    Messenger update(Long postid);
 }

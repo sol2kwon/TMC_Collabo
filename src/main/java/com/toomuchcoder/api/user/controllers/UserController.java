@@ -76,13 +76,13 @@ public class UserController {
 
 
     @PatchMapping(value = "/update") @ResponseBody
-    public void update(@RequestBody UserDTO user) throws Exception {
-        service.update(user);
+    public ResponseEntity<Messenger> update(@RequestBody UserDTO user) throws Exception {
+        return ResponseEntity.ok(service.update(user));
     }
 
     @DeleteMapping(value = "/delete") @ResponseBody
-    public void delete(@RequestBody UserDTO user) throws Exception{
-        service.delete(user);
+    public ResponseEntity<Messenger> delete(@RequestBody UserDTO user){
+        return ResponseEntity.ok(service.delete(user));
     }
 
 

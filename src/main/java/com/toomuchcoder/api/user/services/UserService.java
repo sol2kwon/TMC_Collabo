@@ -6,6 +6,7 @@ import com.toomuchcoder.api.user.domains.UserDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
@@ -34,7 +35,8 @@ public interface UserService {
 
     Messenger count();
 
-    void delete(UserDTO user) throws Exception;
+    //void delete(UserDTO user) throws Exception;
+    Messenger delete(UserDTO user);
     Messenger deleteAll();
 
     Messenger save(UserDTO user);
@@ -47,13 +49,9 @@ public interface UserService {
 
     //커스텀
     Optional<User> findByUsername(String username);
-    void update(UserDTO user) throws Exception;
+    Messenger update(UserDTO user);
 
     Messenger logout();
-
-
-
-
 
 
 

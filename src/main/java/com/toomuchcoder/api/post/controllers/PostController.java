@@ -37,26 +37,13 @@ import java.util.Optional;
 public class PostController {
     private final PostService service;
 
-    @GetMapping("/findAll")
-    public ResponseEntity <List<Post>> findAll(){
-        return ResponseEntity.ok(service.findAll());
-    }
-
-    @GetMapping("/findAll/sort")
-    public ResponseEntity<List<Post>> findAll(Sort sort) {
-        return ResponseEntity.ok(service.findAll(sort));}
-
-    @GetMapping("/count")
-    public ResponseEntity<Messenger> count() {
-        return ResponseEntity.ok(service.count());
-    }
 
     @DeleteMapping("/delete")
     public ResponseEntity <Messenger> delete(Post post) {
         return ResponseEntity.ok(service.delete(post));
 
     }
-    @PostMapping("/post")
+    @PostMapping("/post")//게시글 작성
     public  ResponseEntity<Messenger> save(@ApiParam("Post create")@RequestBody Post post) {
         System.out.println("게시글 작성:"+post.toString());//확인하고 지우기.
         return ResponseEntity.ok(service.save(post));
@@ -66,9 +53,9 @@ public class PostController {
         return ResponseEntity.ok(service.findById(postid));
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<Messenger> update(@RequestBody Post post) {
-        return ResponseEntity.ok(service.update(post));
+    @PutMapping("/postUpdate/{postid}")
+    public ResponseEntity<Messenger> update(@PathVariable Long postid) {
+       return ResponseEntity.ok(service.update(postid));
     }
 
 

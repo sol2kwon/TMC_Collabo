@@ -79,7 +79,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override @Transactional
-    public void update(final UserDTO user) throws Exception{
+    public Messenger update(final UserDTO user) {
         Optional<User> basicUser = repository.findByUsername(user.getUsername());
         User userdb = basicUser.get();
         if(StringUtils.isNotBlank(user.getBirth())) user.setBirth(user.getBirth());
@@ -88,12 +88,15 @@ public class UserServiceImpl implements UserService {
         if(StringUtils.isNotBlank(user.getPassword())) user.setPassword(user.getPassword());
         if(StringUtils.isNotBlank(user.getUsername())&& !repository.existsByUsername(user.getUsername())) user.setUsername(user.getUsername());
         repository.save(userdb);
+        return Messenger.builder().message("업데이트 완료").build();
     }//회원 정보 수정 데이터가 들어오면 해당 항목에 들어가서 값 저장
 
+
     @Override
-    public void delete(UserDTO user) throws Exception{
+    public Messenger delete(UserDTO user)  {
         User userdelete =repository.findByToken(user.getToken()).orElse(null);
         repository.delete(userdelete);
+        return Messenger.builder().message("탈퇴 완료").build();
     }//유저의 토큰값 삭제//해당 회원 탈퇴
 
 
