@@ -80,10 +80,12 @@ public class UserController {
         service.update(user);
     }
 
-    @DeleteMapping("/delete/{userid}")
-    public ResponseEntity<Messenger> delete(@PathVariable("D") User user) {
-        return ResponseEntity.ok(service.delete(user));
+    @DeleteMapping(value = "/delete") @ResponseBody
+    public void delete(@RequestBody UserDTO user) throws Exception{
+        service.delete(user);
     }
+
+
 
     @DeleteMapping("/deleteAll")
     public ResponseEntity<Messenger> deleteAll() {

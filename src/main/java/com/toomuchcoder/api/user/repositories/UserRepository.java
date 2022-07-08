@@ -2,6 +2,7 @@ package com.toomuchcoder.api.user.repositories;
 
 import com.toomuchcoder.api.auth.domain.Messenger;
 import com.toomuchcoder.api.user.domains.User;
+import com.toomuchcoder.api.user.domains.UserDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -37,16 +38,19 @@ interface UserCustomRepository {
     String login(User user);
  */
 
+@Query(value = "select u.username from User u where u.name = :name and u.phone = :phone")
+String findUsername(@Param("name") String name, @Param("email") String email);
 
 }
 @Repository
 public interface UserRepository extends JpaRepository<User,Long> {
     Optional<User> findByUsername(String username);
     //Messenger update(User user);
-
+    Optional<User> findByToken(String token);
     boolean existsByPhone(String phone);
     boolean existsByUsername(String username);
     boolean existsByNickname(String nickname);
+
 
 }
 

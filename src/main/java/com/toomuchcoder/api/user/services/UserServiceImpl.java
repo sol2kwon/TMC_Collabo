@@ -4,12 +4,9 @@ import com.toomuchcoder.api.auth.config.AuthProvider;
 import com.toomuchcoder.api.auth.domain.Messenger;
 import com.toomuchcoder.api.auth.exeption.SecurityRuntimeException;
 import com.toomuchcoder.api.common.Blank.StringUtils;
-import com.toomuchcoder.api.user.domains.Role;
-import com.toomuchcoder.api.user.domains.User;
-import com.toomuchcoder.api.user.domains.UserDTO;
+import com.toomuchcoder.api.user.domains.*;
 import com.toomuchcoder.api.user.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.security.SecurityUtil;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -77,38 +74,35 @@ public class UserServiceImpl implements UserService {
     } //회원조회
 
     @Override
-    public Messenger count() {
+    public Messenger count() {return Messenger.builder().message(string(repository.count())).build();}//회원수 조회
 
-        return Messenger.builder().message(string(repository.count())).build();
-    }//회원수 조회
+
 
     @Override @Transactional
     public void update(final UserDTO user) throws Exception{
         Optional<User> basicUser = repository.findByUsername(user.getUsername());
         User userdb = basicUser.get();
-        if(StringUtils.isNotBlank(user.getName())) user.setName(user.getName());
         if(StringUtils.isNotBlank(user.getBirth())) user.setBirth(user.getBirth());
         if(StringUtils.isNotBlank(user.getNickname())&& !repository.existsByNickname(user.getNickname())) user.setNickname(user.getNickname());
         if(StringUtils.isNotBlank(user.getPhone())&& !repository.existsByPhone(user.getPhone())) user.setPhone(user.getPhone());
         if(StringUtils.isNotBlank(user.getPassword())) user.setPassword(user.getPassword());
         if(StringUtils.isNotBlank(user.getUsername())&& !repository.existsByUsername(user.getUsername())) user.setUsername(user.getUsername());
         repository.save(userdb);
-    }
-//회원 수정
+    }//회원 정보 수정 데이터가 들어오면 해당 항목에 들어가서 값 저장
+
     @Override
-    public void delete(String username) throws Exception {
-        Optional<User> basicUser = repository.findByUsername(username);
+    public void delete(UserDTO user) throws Exception{
+        User userdelete =repository.findByToken(user.getToken()).orElse(null);
+        repository.delete(userdelete);
+    }//유저의 토큰값 삭제//해당 회원 탈퇴
 
-        repository.delete(basicUser.get());
 
-
-    }
 
     @Override
     public Messenger deleteAll() {
         repository.deleteAll();
-        return Messenger.builder().message("전체삭제").build();
-    }
+        return Messenger.builder().message("회원 전체 삭제").build();
+    }//회원 전체 삭제
 
     @Override
     public Messenger save(UserDTO user) {
@@ -130,7 +124,7 @@ public class UserServiceImpl implements UserService {
             result = "FAIL";
         }
         return Messenger.builder().message(result).build();
-    }
+    }//회원가입
 
     @Override
     public Optional<User> findById(String userid) {
@@ -139,11 +133,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public Optional<User> findByToken(UserDTO user) {
+        return repository.findByToken(user.getToken());
+    }//유저의 토큰 찾기
+
+    @Override
     public Messenger existsById(String userid) {
         return repository.existsById(longParse(userid))
                 ? Messenger.builder().message("EXIST").build()
                 : Messenger.builder().message("NOT_EXIST").build();
-    }
+    }//중복 유저 아이디 확인
 
     @Override
     public List<User> findAll(Sort sort) {
@@ -162,7 +161,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Messenger logout() {
-       return Messenger.builder().build();
+       return Messenger.builder().message("로그아웃 완료").build();
     }
 
 }
