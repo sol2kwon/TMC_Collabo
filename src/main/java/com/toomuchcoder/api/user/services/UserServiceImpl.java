@@ -151,10 +151,9 @@ public class UserServiceImpl implements UserService {
     public Page<User> findAll(Pageable pageable) {
         return null;
     }
-
     @Override
     public Optional<User> findByUsername(String username) {
-        return null;
+        return null; //수정해야합니다.......커스텀써야합니다....!!
     }
 
     @Override

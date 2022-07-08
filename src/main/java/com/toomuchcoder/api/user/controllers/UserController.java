@@ -76,7 +76,7 @@ public class UserController {
 
 
     @PatchMapping(value = "/update") @ResponseBody
-    public ResponseEntity<Messenger> update(@RequestBody UserDTO user) throws Exception {
+    public ResponseEntity<Messenger> update(@RequestBody UserDTO user){
         return ResponseEntity.ok(service.update(user));
     }
 
