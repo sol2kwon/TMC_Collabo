@@ -42,6 +42,11 @@ public class User {
     @Column private @NotNull String password;
     @Column private @NotNull String birth;
     @Column private @NotNull String phone;
+    @Column private @NotNull Boolean vegetarian;
+    @Column private  String allergy;//테이블 따로 빼야할까 여쭤보기
+    @Column private  String calorie;//칼로리 바로 설정
+    @Column private  String diabetes;
+
     @Column private String token;//토큰
 
     @OneToMany(mappedBy = "user")

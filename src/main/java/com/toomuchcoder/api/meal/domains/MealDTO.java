@@ -4,6 +4,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.Column;
+
 /**
  * packageName: com.toomuchcoder.api.meal.domains
  * fileName        : MealDTO.java
@@ -22,5 +24,13 @@ public class MealDTO {
     @ApiModelProperty(position = 2)
     private String mealimages;
     @ApiModelProperty(position = 3)
+    private String breakfast;
+    @ApiModelProperty(position = 4)
+    private String lunch;
+    @ApiModelProperty(position = 5)
+    private String dinner;
+    @ApiModelProperty(position = 3)
     private String date;
+
+
 }
