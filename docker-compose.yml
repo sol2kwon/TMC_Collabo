@@ -8,7 +8,7 @@ services:
       - ~/docker/mariadb/var/lib/mysql:/var/lib/mysql
       - ~/docker/mariadb/var/log/maria:/var/log/maria
     environment:
-      - MYSQL_DATABASE=tmcreal
+      - MYSQL_DATABASE=tmc
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_ROOT_HOST=%
     command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
