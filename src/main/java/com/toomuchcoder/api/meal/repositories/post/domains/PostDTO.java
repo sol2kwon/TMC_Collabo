@@ -1,4 +1,4 @@
-package com.toomuchcoder.api.post.domains;
+package com.toomuchcoder.api.meal.repositories.post.domains;
 
 import com.toomuchcoder.api.user.domains.Role;
 import io.swagger.annotations.ApiModelProperty;

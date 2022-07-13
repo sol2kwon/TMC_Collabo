@@ -82,7 +82,6 @@ public class UserServiceImpl implements UserService {
     public Messenger update(final UserDTO user) {
         Optional<User> basicUser = repository.findByUsername(user.getUsername());
         User userdb = basicUser.get();
-        if(StringUtils.isNotBlank(user.getBirth())) user.setBirth(user.getBirth());
         if(StringUtils.isNotBlank(user.getNickname())&& !repository.existsByNickname(user.getNickname())) user.setNickname(user.getNickname());
         if(StringUtils.isNotBlank(user.getPhone())&& !repository.existsByPhone(user.getPhone())) user.setPhone(user.getPhone());
         if(StringUtils.isNotBlank(user.getPassword())) user.setPassword(user.getPassword());
@@ -117,7 +116,6 @@ public class UserServiceImpl implements UserService {
             repository.save(User.builder()
                     .username(user.getUsername())
                     .name(user.getName())
-                    .birth(user.getBirth())
                     .phone(user.getPhone())
                     .nickname(user.getNickname())
                     .password(encoder.encode(user.getPassword()))

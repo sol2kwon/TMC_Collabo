@@ -1,23 +1,13 @@
-package com.toomuchcoder.api.post.controllers;
+package com.toomuchcoder.api.meal.repositories.post.controllers;
 
 import com.toomuchcoder.api.auth.domain.Messenger;
-import com.toomuchcoder.api.post.domains.Post;
-import com.toomuchcoder.api.post.domains.PostDTO;
-import com.toomuchcoder.api.post.services.PostService;
-import com.toomuchcoder.api.user.domains.User;
-import com.toomuchcoder.api.user.domains.UserDTO;
-import com.toomuchcoder.api.user.services.UserService;
-import io.swagger.annotations.ApiOperation;
+import com.toomuchcoder.api.meal.repositories.post.domains.Post;
+import com.toomuchcoder.api.meal.repositories.post.services.PostService;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 /**

@@ -1,9 +1,9 @@
-package com.toomuchcoder.api.comment.services;
+package com.toomuchcoder.api.image.services;
 
 
 import com.toomuchcoder.api.auth.domain.Messenger;
-import com.toomuchcoder.api.comment.domains.Comment;
-import com.toomuchcoder.api.comment.repositories.CommentRepository;
+import com.toomuchcoder.api.image.domains.Image;
+import com.toomuchcoder.api.image.repositories.ImageRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,28 +22,28 @@ import static com.toomuchcoder.api.common.Box.Lambda.string;
  **/
 @Service
 @RequiredArgsConstructor
-public class CommentServiceImpl implements CommentService{
-    private final CommentRepository commentRepository;
+public class ImageServiceImpl implements ImageService {
+    private final ImageRepository imageRepository;
 
     @Override
     public Messenger count() {
-        return Messenger.builder().message(string(commentRepository.count())).build();
+        return Messenger.builder().message(string(imageRepository.count())).build();
     }
 
     @Override
-    public Messenger update(Comment comment) {
-        return Messenger.builder().message("comment 업데이트 완료").build();
+    public Messenger update(Image comment) {
+        return Messenger.builder().message("image 업데이트 완료").build();
     }
 
     @Override
-    public Messenger delete(Comment comment) {
-        commentRepository.delete(comment);
-        return Messenger.builder().message("Comment 삭제 완료").build();
+    public Messenger delete(Image image) {
+        imageRepository.delete(image);
+        return Messenger.builder().message("image 삭제 완료").build();
     }
 
     @Override
-    public Messenger save(Comment comment) {
-        commentRepository.save(comment);
+    public Messenger save(Image image) {
+        imageRepository.save(image);
         return Messenger.builder().message("댓글 작성완료").build();
     }
 }

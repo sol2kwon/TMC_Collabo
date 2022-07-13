@@ -1,8 +1,8 @@
-package com.toomuchcoder.api.post.services;
+package com.toomuchcoder.api.meal.repositories.post.services;
 
 import com.toomuchcoder.api.auth.domain.Messenger;
-import com.toomuchcoder.api.post.domains.Post;
-import com.toomuchcoder.api.post.repositories.PostRepository;
+import com.toomuchcoder.api.meal.repositories.post.domains.Post;
+import com.toomuchcoder.api.meal.repositories.post.repositories.PostRepository;
 import com.toomuchcoder.api.user.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;

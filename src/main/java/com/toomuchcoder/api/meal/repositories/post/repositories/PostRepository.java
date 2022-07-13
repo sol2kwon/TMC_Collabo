@@ -1,7 +1,6 @@
-package com.toomuchcoder.api.post.repositories;
+package com.toomuchcoder.api.meal.repositories.post.repositories;
 
-import com.toomuchcoder.api.post.domains.Post;
-import com.toomuchcoder.api.user.domains.User;
+import com.toomuchcoder.api.meal.repositories.post.domains.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

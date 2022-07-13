@@ -2,11 +2,6 @@ package com.toomuchcoder.api.condition.services;
 
 import com.toomuchcoder.api.auth.domain.Messenger;
 import com.toomuchcoder.api.condition.domains.Condition;
-import com.toomuchcoder.api.post.domains.Post;
-import com.toomuchcoder.api.user.domains.User;
-import com.toomuchcoder.api.user.domains.UserDTO;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;

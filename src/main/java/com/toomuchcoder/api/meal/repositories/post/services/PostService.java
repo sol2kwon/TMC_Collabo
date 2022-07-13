@@ -1,8 +1,7 @@
-package com.toomuchcoder.api.post.services;
+package com.toomuchcoder.api.meal.repositories.post.services;
 
 import com.toomuchcoder.api.auth.domain.Messenger;
-import com.toomuchcoder.api.post.domains.Post;
-import com.toomuchcoder.api.post.domains.PostDTO;
+import com.toomuchcoder.api.meal.repositories.post.domains.Post;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;

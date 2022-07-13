@@ -2,11 +2,6 @@ package com.toomuchcoder.api.meal.services;
 
 import com.toomuchcoder.api.auth.domain.Messenger;
 import com.toomuchcoder.api.meal.domains.Meal;
-import com.toomuchcoder.api.post.domains.Post;
-import org.springframework.data.domain.Sort;
-
-import java.util.List;
-import java.util.Optional;
 
 /**
  * packageName: com.toomuchcoder.api.meal.services

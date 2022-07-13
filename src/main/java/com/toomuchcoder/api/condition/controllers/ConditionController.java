@@ -3,7 +3,6 @@ package com.toomuchcoder.api.condition.controllers;
 import com.toomuchcoder.api.auth.domain.Messenger;
 import com.toomuchcoder.api.condition.domains.Condition;
 import com.toomuchcoder.api.condition.services.ConditionService;
-import com.toomuchcoder.api.post.domains.Post;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;

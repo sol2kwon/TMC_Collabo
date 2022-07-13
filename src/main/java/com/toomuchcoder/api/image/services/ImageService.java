@@ -1,7 +1,7 @@
-package com.toomuchcoder.api.comment.services;
+package com.toomuchcoder.api.image.services;
 
 import com.toomuchcoder.api.auth.domain.Messenger;
-import com.toomuchcoder.api.comment.domains.Comment;
+import com.toomuchcoder.api.image.domains.Image;
 
 /**
  * packageName: com.toomuchcoder.api.comment.services
@@ -14,16 +14,16 @@ import com.toomuchcoder.api.comment.domains.Comment;
  * =============================================
  * 2022-06-01         solyikwon      최초 생성
  **/
-public interface CommentService {
+public interface ImageService {
      Messenger count() ;
 
 
-      Messenger update(Comment comment);
+      Messenger update(Image comment);
 
 
-     Messenger delete(Comment comment);
+     Messenger delete(Image comment);
 
 
-     Messenger save(Comment comment);
+     Messenger save(Image comment);
 
 }

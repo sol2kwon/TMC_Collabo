@@ -1,4 +1,4 @@
-package com.toomuchcoder.api.comment.domains;
+package com.toomuchcoder.api.image.domains;
 
 import com.toomuchcoder.api.user.domains.User;
 import lombok.AllArgsConstructor;
@@ -25,13 +25,13 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "comments")
-public class Comment {
+@Table(name = "images")
+public class Image {
     @Id
-    @Column(name = "commentid")
+    @Column(name = "imageid")
     @GeneratedValue
-    private Long commentid;
-    @Column private  String comment;
+    private Long imageid;
+    @Column private  String urlimage;
     @Column private @NotNull String date;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -3,7 +3,6 @@ package com.toomuchcoder.api.meal.controllers;
 import com.toomuchcoder.api.auth.domain.Messenger;
 import com.toomuchcoder.api.meal.domains.Meal;
 import com.toomuchcoder.api.meal.services.MealService;
-import com.toomuchcoder.api.post.domains.Post;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

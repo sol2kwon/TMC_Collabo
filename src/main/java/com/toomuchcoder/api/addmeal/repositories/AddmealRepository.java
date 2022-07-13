@@ -1,7 +1,6 @@
 package com.toomuchcoder.api.addmeal.repositories;
 
 import com.toomuchcoder.api.addmeal.domains.Addmeal;
-import com.toomuchcoder.api.comment.domains.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
