@@ -38,10 +38,10 @@ public class Nutrient {
     @Column private String userminerals;
     @Column private String uservitamin;
 
+    @OneToOne
+    @JoinColumn
+    public User user;
 
-
-   @OneToOne
-    private User user;
 
 
 }
