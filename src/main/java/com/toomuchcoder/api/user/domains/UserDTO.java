@@ -29,7 +29,7 @@ public class UserDTO {
     @ApiModelProperty(position = 6) String phone;
     @ApiModelProperty(position = 7) String weight;
     @ApiModelProperty(position = 8) String height;
-    @ApiModelProperty(position = 9) Boolean gender;
+    @ApiModelProperty(position = 9) String gender;
     @ApiModelProperty(position = 10) String userkcal;
     @ApiModelProperty(position = 11) String usercarbo;
     @ApiModelProperty(position = 12) String userprotein;
@@ -37,8 +37,9 @@ public class UserDTO {
     @ApiModelProperty(position = 14) String usercalcium;
     @ApiModelProperty(position = 15) String userminerals;
     @ApiModelProperty(position = 16) String uservitamin;
-    @ApiModelProperty(position = 17) private String token;
-    @ApiModelProperty(position = 18) private List<Role> roles;
+    @ApiModelProperty(position = 17) String email;
+    @ApiModelProperty(position = 18) private String token;
+    @ApiModelProperty(position = 19) private List<Role> roles;
 //date 뺐음
 
 

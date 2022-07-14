@@ -40,7 +40,8 @@ public class User {
     @Column private @NotNull String phone;
     @Column private  String weight;
     @Column private  String height;
-    @Column private  Boolean gender;
+    @Column private  String gender;//Boolean 받아야함
+
     //@Column private @NotNull String date;
 
     @Column private String token;//토큰

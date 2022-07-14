@@ -122,6 +122,7 @@ public class UserServiceImpl implements UserService {
                             .weight(user.getWeight())
                             .height(user.getHeight())
                             .gender(user.getGender())
+                            .email(user.getEmail())
                     .roles(list).build());
             result = "SUCCESS";
         } else {
