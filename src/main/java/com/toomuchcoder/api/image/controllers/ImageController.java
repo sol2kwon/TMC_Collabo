@@ -33,20 +33,20 @@ public class ImageController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Messenger> update(@RequestBody Image comment) {
-        return ResponseEntity.ok(service.update(comment));
+    public ResponseEntity<Messenger> update(@RequestBody Image image) {
+        return ResponseEntity.ok(service.update(image));
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<Messenger> delete(Image comment) {
-        return ResponseEntity.ok(service.delete(comment));
+    public ResponseEntity<Messenger> delete(Image image) {
+        return ResponseEntity.ok(service.delete(image));
 
     }
 
     @PostMapping("/image")
-    public ResponseEntity<Messenger> save(@ApiParam("image 작성 완료")@RequestBody Image comment) {
-        System.out.println("image check:"+comment.toString());//확인하고 지우기.
-        return ResponseEntity.ok(service.save(comment));
+    public ResponseEntity<Messenger> save(@ApiParam("image 작성 완료")@RequestBody Image image) {
+        System.out.println("image check:"+image.toString());//확인하고 지우기.
+        return ResponseEntity.ok(service.save(image));
     }
 
 }

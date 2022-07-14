@@ -18,12 +18,12 @@ public interface ImageService {
      Messenger count() ;
 
 
-      Messenger update(Image comment);
+      Messenger update(Image image);
 
 
-     Messenger delete(Image comment);
+     Messenger delete(Image image);
 
 
-     Messenger save(Image comment);
+     Messenger save(Image image);
 
 }

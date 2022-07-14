@@ -2,7 +2,6 @@ package com.toomuchcoder.api.auth.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.toomuchcoder.api.user.domains.User;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -31,14 +30,15 @@ public class Auth implements UserDetails {
     private final String username;
     private final String name;
     @JsonIgnore private final String password;
-    private final String birth;
     private final String phone;
+    private final String email;
+
 
     public static Auth build(User user){
         List<GrantedAuthority> authorities = user.getRoles().stream()
                 .map(role -> new SimpleGrantedAuthority(role.getAuthority()))
                 .collect(Collectors.toList());
-        return new Auth(user.getUserid(), user.getUsername(), user.getName(), user.getPassword(),user.getBirth(), user.getPhone(), authorities);
+        return new Auth(user.getUserid(), user.getUsername(), user.getUsername(),user.getPassword(), user.getPhone(),user.getEmail(), authorities);
     }
 
     private  final Collection<? extends GrantedAuthority> authorities;

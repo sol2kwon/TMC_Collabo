@@ -1,8 +1,7 @@
 package com.toomuchcoder.api.user.domains;
 
-import com.toomuchcoder.api.addmeal.domains.Addmeal;
 import com.toomuchcoder.api.image.domains.Image;
-import com.toomuchcoder.api.meal.repositories.post.domains.Post;
+import com.toomuchcoder.api.nutrient.domains.Nutrient;
 import lombok.*;
 
 import javax.persistence.*;
@@ -36,18 +35,12 @@ public class User {
     @Column private @NotNull String username;
     @Column private @NotNull String password;
     @Column private @NotNull String nickname;
+    @Column private @NotNull String email;
     @Column (unique = true) private @NotNull String name;
     @Column private @NotNull String phone;
-    @Column private @NotNull String weight;
-    @Column private @NotNull String height;
-    @Column private @NotNull Boolean gender;
-    @Column private @NotNull String userkcal;
-    @Column private @NotNull String usercarbo;
-    @Column private @NotNull String userprotein;
-    @Column private @NotNull String userfat;
-    @Column private @NotNull String usercalcium;
-    @Column private @NotNull String userminerals;
-    @Column private @NotNull String uservitamin;
+    @Column private  String weight;
+    @Column private  String height;
+    @Column private  Boolean gender;
     //@Column private @NotNull String date;
 
     @Column private String token;//토큰
@@ -55,15 +48,10 @@ public class User {
     @OneToMany(mappedBy = "user")
     List<Image> images = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user")
-    List<Addmeal> addmeals = new ArrayList<>();
+    @OneToOne
+    @JoinColumn(name = "nutrientid")
+    public Nutrient nutrient;//연관관계 주인
 
-    @OneToMany(mappedBy = "user")
-    List<Image> comments = new ArrayList<>();
-
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY )
-    //@JsonIgnoreProperties({"user"})
-    private List<Post> posts = new ArrayList<>();
 
     @ElementCollection(fetch = FetchType.EAGER)
     public List<Role>roles;

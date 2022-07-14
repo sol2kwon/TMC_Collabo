@@ -1,5 +1,6 @@
 package com.toomuchcoder.api.image.domains;
 
+import com.toomuchcoder.api.food.domains.Food;
 import com.toomuchcoder.api.user.domains.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,6 +9,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * packageName: com.toomuchcoder.api.comment.domains
@@ -37,5 +40,9 @@ public class Image {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userid")
     User user;
+
+    @OneToMany(mappedBy = "image")
+    List<Food> foods = new ArrayList<>();
+
 
 }

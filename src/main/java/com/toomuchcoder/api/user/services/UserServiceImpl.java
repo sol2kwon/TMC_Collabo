@@ -119,6 +119,9 @@ public class UserServiceImpl implements UserService {
                     .phone(user.getPhone())
                     .nickname(user.getNickname())
                     .password(encoder.encode(user.getPassword()))
+                            .weight(user.getWeight())
+                            .height(user.getHeight())
+                            .gender(user.getGender())
                     .roles(list).build());
             result = "SUCCESS";
         } else {
