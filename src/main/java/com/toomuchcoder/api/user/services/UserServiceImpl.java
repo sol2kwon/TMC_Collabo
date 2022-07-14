@@ -82,10 +82,15 @@ public class UserServiceImpl implements UserService {
     public Messenger update(final UserDTO user) {
         Optional<User> basicUser = repository.findByUsername(user.getUsername());
         User userdb = basicUser.get();
-        if(StringUtils.isNotBlank(user.getNickname())&& !repository.existsByNickname(user.getNickname())) user.setNickname(user.getNickname());
-        if(StringUtils.isNotBlank(user.getPhone())&& !repository.existsByPhone(user.getPhone())) user.setPhone(user.getPhone());
-        if(StringUtils.isNotBlank(user.getPassword())) user.setPassword(user.getPassword());
-        if(StringUtils.isNotBlank(user.getUsername())&& !repository.existsByUsername(user.getUsername())) user.setUsername(user.getUsername());
+        if(StringUtils.isNotBlank(user.getName())) userdb.setName(user.getName());
+        if(StringUtils.isNotBlank(user.getNickname())&& !repository.existsByNickname(user.getNickname())) userdb.setNickname(user.getNickname());
+        if(StringUtils.isNotBlank(user.getPhone())&& !repository.existsByPhone(user.getPhone())) userdb.setPhone(user.getPhone());
+        if(StringUtils.isNotBlank(user.getEmail())&& !repository.existsByEmail(user.getEmail())) userdb.setEmail(user.getEmail());
+        if(StringUtils.isNotBlank(user.getPassword())) userdb.setPassword(encoder.encode(user.getPassword()));
+        if(StringUtils.isNotBlank(user.getGender())&& !repository.existsByGender(user.getUsername())) userdb.setGender(user.getGender());
+        if(StringUtils.isNotBlank(user.getHeight())&& !repository.existsByHeight(user.getHeight())) userdb.setHeight(user.getHeight());
+        if(StringUtils.isNotBlank(user.getWeight())&& !repository.existsByWeight(user.getWeight())) userdb.setWeight(user.getWeight());
+        if(StringUtils.isNotBlank(user.getUsername())&& !repository.existsByUsername(user.getUsername())) userdb.setUsername(user.getUsername());
         repository.save(userdb);
         return Messenger.builder().message("업데이트 완료").build();
     }//회원 정보 수정 데이터가 들어오면 해당 항목에 들어가서 값 저장

@@ -36,7 +36,6 @@ public interface UserService {
     Messenger count();
 
     //void delete(UserDTO user) throws Exception;
-    Messenger delete(UserDTO user);
     Messenger deleteAll();
 
     Messenger save(UserDTO user);
@@ -52,6 +51,12 @@ public interface UserService {
     Messenger update(UserDTO user);
 
     Messenger logout();
+
+    void delete(UserDTO user) throws Exception;
+
+    Optional<User> deleteByUserId(UserDTO userDTO) throws Exception;
+
+
 
 
 

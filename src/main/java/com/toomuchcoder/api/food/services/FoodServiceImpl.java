@@ -14,7 +14,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class FoodServiceImpl implements FoodService {
     private final FoodRepository foodRepository;
-
     @Override
     public List<Food> findAll(Sort sort) {
         return null;

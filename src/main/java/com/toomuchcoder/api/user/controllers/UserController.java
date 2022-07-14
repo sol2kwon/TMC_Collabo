@@ -3,6 +3,7 @@ package com.toomuchcoder.api.user.controllers;
 import com.toomuchcoder.api.auth.domain.Messenger;
 import com.toomuchcoder.api.user.domains.User;
 import com.toomuchcoder.api.user.domains.UserDTO;
+import com.toomuchcoder.api.user.repositories.UserRepository;
 import com.toomuchcoder.api.user.services.UserService;
 import io.swagger.annotations.*;
 import lombok.RequiredArgsConstructor;
@@ -35,6 +36,7 @@ import java.util.Optional;
 
 public class UserController {
     private final UserService service;
+    private final UserRepository repository;
     private final ModelMapper modelMapper;// 맵 1:1,필터 ??,리듀서 1:다
 
     @PostMapping("/login")
@@ -107,6 +109,64 @@ public class UserController {
     @GetMapping("/existsById/{userid}")
     public ResponseEntity<Messenger> existsById(@PathVariable String userid) {
         return ResponseEntity.ok(service.existsById(userid));
-
     }
+
+    @PostMapping("/existsByUsername") @ResponseBody
+    public ResponseEntity<Boolean> existsByUsername(@RequestBody UserDTO user) {
+        return ResponseEntity.ok(repository.existsByUsername(user.getUsername()));
+    }
+
+    @PostMapping("/existsByPhone") @ResponseBody
+    public ResponseEntity<Boolean> existsByPhone(@RequestBody UserDTO user) {
+        return ResponseEntity.ok(repository.existsByPhone(user.getPhone()));
+    }
+
+    @PostMapping("/existsByEmail") @ResponseBody
+    public ResponseEntity<Boolean> existsByEmail(@RequestBody UserDTO user) {
+        return ResponseEntity.ok(repository.existsByEmail(user.getEmail()));
+    }
+
+    @PostMapping("/existsByNickname") @ResponseBody
+    public ResponseEntity<Boolean> existsByNickname(@RequestBody UserDTO user) {
+        return ResponseEntity.ok(repository.existsByNickname(user.getNickname()));
+    }
+
+    @PostMapping("/existsByGender") @ResponseBody
+    public ResponseEntity<Boolean> existsByGender(@RequestBody UserDTO user) {
+        return ResponseEntity.ok(repository.existsByNickname(user.getGender()));
+
+    }@PostMapping("/existsByWeight") @ResponseBody
+    public ResponseEntity<Boolean> existsByWeight(@RequestBody UserDTO user) {
+
+        return ResponseEntity.ok(repository.existsByNickname(user.getWeight()));
+    }
+    @PostMapping("/existsByHeight") @ResponseBody
+    public ResponseEntity<Boolean> existsByHeight(@RequestBody UserDTO user) {
+        return ResponseEntity.ok(repository.existsByNickname(user.getHeight()));
+    }
+/**
+    @DeleteMapping(value = "/delete") @ResponseBody
+    public void delete(@RequestBody UserDTO user) throws Exception{
+        System.out.println(user);
+        service.delete(user);
+    }
+ */
+    @DeleteMapping(value = "/deleteByUserId") @ResponseBody
+    public void deleteByUserId(@RequestBody UserDTO user) throws Exception{
+        service.delete(user);
+    }
+
+    @Override
+    public void delete(UserDTO user) throws Exception{
+        User user =repository.findByToken(user.getToken()).orElse(null);
+        repository.delete(user);
+    }
+
+    @Override
+    public Optional<User> deleteByUserId(UserDTO userDTO) throws Exception {
+        Optional<User> originUser =repository.findByUserId(userDTO.getUserId());
+        repository.delete(originUser.get());
+        return originUser;
+    }
+
 }
