@@ -10,7 +10,9 @@ public class FoodDTO {
     @ApiModelProperty(position = 5) String protein;
     @ApiModelProperty(position = 6) String fat;
     @ApiModelProperty(position = 7) String calcium;
-    @ApiModelProperty(position = 8) String minerals;
-    @ApiModelProperty(position = 8) String vitamin;
-    @ApiModelProperty(position = 8) String date;
+    @ApiModelProperty(position = 8) String phosphorus ;
+    @ApiModelProperty(position = 9) String salt ;
+    @ApiModelProperty(position = 10) String potassium  ;
+    @ApiModelProperty(position = 11) String pagnesium  ;
+    @ApiModelProperty(position = 12) String date;
 }

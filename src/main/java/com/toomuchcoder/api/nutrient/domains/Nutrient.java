@@ -35,8 +35,10 @@ public class Nutrient {
     @Column private String userprotein;
     @Column private String userfat;
     @Column private String usercalcium;
-    @Column private String userminerals;
-    @Column private String uservitamin;
+    @Column private String userphosphorus ;
+    @Column private String usersalt;
+    @Column private String userpotassium;
+    @Column private String userpagnesium;
 
     @OneToOne
     @JoinColumn

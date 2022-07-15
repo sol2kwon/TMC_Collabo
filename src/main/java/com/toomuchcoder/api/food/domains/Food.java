@@ -26,11 +26,14 @@ public class Food {
     @Column private  String foodname;
     @Column private  String kcal;
     @Column private  String carbohydrate;
+    @Column private  String sugar;
     @Column private  String protein;
     @Column private  String fat;
     @Column private  String calcium;
-    @Column private  String minerals;
-    @Column private  String vitamin;
+    @Column private  String phosphorus ;
+    @Column private  String salt ;
+    @Column private  String potassium  ;
+    @Column private  String pagnesium  ;
     @Column private  String date;
 
 

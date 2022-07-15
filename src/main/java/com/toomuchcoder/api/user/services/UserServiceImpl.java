@@ -96,14 +96,6 @@ public class UserServiceImpl implements UserService {
     }//회원 정보 수정 데이터가 들어오면 해당 항목에 들어가서 값 저장
 
 
-    @Override
-    public Messenger delete(UserDTO user)  {
-        User userdelete =repository.findByToken(user.getToken()).orElse(null);
-        repository.delete(userdelete);
-        return Messenger.builder().message("탈퇴 완료").build();
-    }//유저의 토큰값 삭제//해당 회원 탈퇴
-
-
 
     @Override
     public Messenger deleteAll() {
@@ -167,5 +159,14 @@ public class UserServiceImpl implements UserService {
     public Messenger logout() {
        return Messenger.builder().message("로그아웃 완료").build();
     }
+
+
+    @Override
+    public void delete(UserDTO user) throws Exception {
+        User user1 = repository.findById(user.getUserid()).orElse(null);
+        repository.delete(user1);
+    }
+
+
 
 }

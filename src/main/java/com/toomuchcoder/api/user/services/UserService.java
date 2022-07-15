@@ -6,11 +6,8 @@ import com.toomuchcoder.api.user.domains.UserDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,7 +51,6 @@ public interface UserService {
 
     void delete(UserDTO user) throws Exception;
 
-    Optional<User> deleteByUserId(UserDTO userDTO) throws Exception;
 
 
 

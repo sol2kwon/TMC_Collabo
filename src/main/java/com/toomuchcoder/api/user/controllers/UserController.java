@@ -81,11 +81,12 @@ public class UserController {
     public ResponseEntity<Messenger> update(@RequestBody UserDTO user){
         return ResponseEntity.ok(service.update(user));
     }
-
+/**
     @DeleteMapping(value = "/delete") @ResponseBody
     public ResponseEntity<Messenger> delete(@RequestBody UserDTO user){
         return ResponseEntity.ok(service.delete(user));
     }
+ */
 
 
 
@@ -151,22 +152,16 @@ public class UserController {
         service.delete(user);
     }
  */
-    @DeleteMapping(value = "/deleteByUserId") @ResponseBody
-    public void deleteByUserId(@RequestBody UserDTO user) throws Exception{
+    @DeleteMapping( "/delete") @ResponseBody
+    public void delete(@RequestBody UserDTO user) throws Exception{
         service.delete(user);
     }
 
-    @Override
-    public void delete(UserDTO user) throws Exception{
-        User user =repository.findByToken(user.getToken()).orElse(null);
-        repository.delete(user);
-    }
 
-    @Override
-    public Optional<User> deleteByUserId(UserDTO userDTO) throws Exception {
-        Optional<User> originUser =repository.findByUserId(userDTO.getUserId());
-        repository.delete(originUser.get());
-        return originUser;
-    }
+
+
+
+
+
 
 }
