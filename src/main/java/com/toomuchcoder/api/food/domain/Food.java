@@ -25,14 +25,15 @@ public class Food {
     @Column private  String kcal;
     @Column private  String carbohydrate;
     @Column private  String sugar;
-    @Column private  String protein;
     @Column private  String fat;
+    @Column private  String protein;
     @Column private  String calcium;
     @Column private  String phosphorus ;
     @Column private  String salt ;
     @Column private  String potassium  ;
     @Column private  String pagnesium  ;
     @Column private  String date;
+    //차트와 텍스트 여기다 넣을지 고민해보기
 
 
 

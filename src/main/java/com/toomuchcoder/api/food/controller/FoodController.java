@@ -14,8 +14,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.List;
 
 
@@ -24,7 +26,7 @@ import java.util.List;
 @RequestMapping("/foods")
 public class FoodController {
     private final FoodService service;
-    private Logger log;
+
 
 
     @GetMapping("/findAll")
@@ -84,20 +86,16 @@ public class FoodController {
         return ResponseEntity.status(HttpStatus.CREATED).body(originalFileName);
     }
 
+    @PostMapping(value ="/test/multipart")
+    public ResponseEntity testMultipart(MultipartFile file) throws Exception {
+        if (file == null) {
+            throw new Exception();
+        }
+        String line;
+        BufferedReader br = new BufferedReader(new InputStreamReader(file.getInputStream()));
+        while ((line = br.readLine()) != null) {
+        }
 
-/**
- @PostMapping("/upload")
-public ResponseEntity<String> uploadFile(MultipartFile file) throws IllegalStateException, IOException{
-
-    if( !file.isEmpty() ) {
-
-        log.info("file org name = {}, file.getOriginalFilename()");
-        log.info("file content type = {}, file.getContentType()");
-        file.transferTo(new File(file.getOriginalFilename()));
+        return ResponseEntity.ok().build();
     }
-
-    return new ResponseEntity<>("", HttpStatus.OK);
-    //왜 파일이 안넘어올까요................... 할수있을까요..............................하...
-}
- */
 }
