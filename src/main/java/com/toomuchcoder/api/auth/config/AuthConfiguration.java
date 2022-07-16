@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.firewall.DefaultHttpFirewall;
+import org.springframework.security.web.firewall.HttpFirewall;
 
 /**
  * packageName: com.toomuchcoder.api.auth.config
@@ -36,7 +38,13 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers(HttpMethod.OPTIONS,"*/**").antMatchers("/");//첫번째 화면은 누구든지 볼 수 있게 한다.
+        web.httpFirewall(defaultHttpFirewall());// "/"허용
     }
+
+    private HttpFirewall defaultHttpFirewall() {
+        return new DefaultHttpFirewall();
+    }
+
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();

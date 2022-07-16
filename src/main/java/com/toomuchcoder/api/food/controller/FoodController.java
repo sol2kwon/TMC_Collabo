@@ -74,10 +74,11 @@ public class FoodController {
    @PostMapping("/upload")
     public ResponseEntity upload(@RequestPart MultipartFile file) {
         String originalFileName = file.getOriginalFilename();
-        File destination = new File("C:/Users/amorf/test" + originalFileName);
+        File destination = new File("C:/Users/amorf/test/" + originalFileName);//경로확인하기..
         try {
             file.transferTo(destination);
         } catch (IOException e) {
+            e.printStackTrace();//에러확인
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(originalFileName);
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(originalFileName);
