@@ -1,6 +1,6 @@
 package com.toomuchcoder.api.auth.config;
 
-import com.toomuchcoder.api.user.domains.Role;
+import com.toomuchcoder.api.user.domain.Role;
 import com.toomuchcoder.api.auth.services.AuthServiceImpl;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;

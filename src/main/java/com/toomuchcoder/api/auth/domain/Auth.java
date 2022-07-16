@@ -1,7 +1,7 @@
 package com.toomuchcoder.api.auth.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.toomuchcoder.api.user.domains.User;
+import com.toomuchcoder.api.user.domain.User;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
