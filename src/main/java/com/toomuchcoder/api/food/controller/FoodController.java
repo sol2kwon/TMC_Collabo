@@ -71,8 +71,7 @@ public class FoodController {
     public ResponseEntity<Messenger> existsById(@PathVariable String foodid) {
         return ResponseEntity.ok(service.existsById(foodid));
     }
-/**
-    @PostMapping("/upload")
+   @PostMapping("/upload")
     public ResponseEntity upload(@RequestPart MultipartFile file) {
         String originalFileName = file.getOriginalFilename();
         File destination = new File("C:/Users/amorf/test" + originalFileName);
@@ -83,9 +82,10 @@ public class FoodController {
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(originalFileName);
     }
- */
 
-@PostMapping(value="uploadFile")
+
+/**
+ @PostMapping("/upload")
 public ResponseEntity<String> uploadFile(MultipartFile file) throws IllegalStateException, IOException{
 
     if( !file.isEmpty() ) {
@@ -98,4 +98,5 @@ public ResponseEntity<String> uploadFile(MultipartFile file) throws IllegalState
     return new ResponseEntity<>("", HttpStatus.OK);
     //왜 파일이 안넘어올까요................... 할수있을까요..............................하...
 }
+ */
 }
