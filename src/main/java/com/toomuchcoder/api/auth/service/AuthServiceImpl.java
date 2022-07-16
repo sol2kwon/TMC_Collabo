@@ -1,4 +1,4 @@
-package com.toomuchcoder.api.auth.services;
+package com.toomuchcoder.api.auth.service;
 
 import com.toomuchcoder.api.auth.domain.Auth;
 import com.toomuchcoder.api.user.domain.User;
