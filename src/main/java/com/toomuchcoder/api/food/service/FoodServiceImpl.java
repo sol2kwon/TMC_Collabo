@@ -8,10 +8,18 @@ import com.toomuchcoder.api.user.domain.Role;
 import com.toomuchcoder.api.user.domain.User;
 import com.toomuchcoder.api.user.domain.UserDTO;
 import lombok.RequiredArgsConstructor;
+import org.apache.http.HttpEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,59 +63,90 @@ public class FoodServiceImpl implements FoodService {
         return null;
     }
 
-    /**
-    public void analysisFood (MultipartFile multipartFile) throws Exception {
-        long start = System.currentTimeMillis();
-        for (int i = 0 ; i < SIZE ; i++) {
-            Food food = food.builder()
-                    .age(10)
-                    .name("test")
-                    .telNo("123")
-                    .build();
-            foodRepository.save(member);
+
+    public void analysisFood (MultipartFile file) throws Exception {
+        String url = "http://localhost:8080/savemultipart";
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        HttpPost httpPost = new HttpPost(url);
+
+        HttpEntity httpEntity = MultipartEntityBuilder.create()
+                //.addTextBody("name", "Dongwoo")
+                //.addTextBody("nickname", "Victor")
+                .addBinaryBody("file",
+                        new File("/Users/amorf/test/testtest.txt"),
+                        ContentType.MULTIPART_FORM_DATA,
+                        "testtest.txt")
+                .build();
+
+        httpPost.setEntity(httpEntity);
+
+        CloseableHttpResponse response = httpClient.execute(httpPost);
+
+        System.out.println("=========================== start ============================");
+        System.out.println("Status Code: " + response.getStatusLine().getStatusCode());
+        System.out.println("============================ end =============================");
+        httpClient.close();
+
+        public List<>analysisFood (MultipartFile file) throws Exception {
+
         }
-        System.out.println("elapsed time : "  + (System.currentTimeMillis() - start));
+        @Transactional
+        public void readObject(String storedFileName) throws IOException {
+            S3Object o = amazonS3.getObject(new GetObjectRequest(bucket, storedFileName));
+            S3ObjectInputStream ois = null;
+            BufferedReader br = null;
+
+            // Read the CSV one line at a time and process it.
+            try {
+                ois = o.getObjectContent();
+                System.out.println ("ois = " + ois);
+                br = new BufferedReader (new InputStreamReader(ois, "UTF-8"));
+
+                String line;
+                while ((line = br.readLine()) != null) {
+                    // Store 1 record in an array separated by commas
+                    String[] data = line.split(",", 0);
+
+                    Food food = new Food(data[0], data[1]);
+                    em.persist(food);
+                }
+            } finally {
+                if(ois != null){
+                    ois.close();
+                }
+                if(br != null){
+                    br.close();
+                }
+            }
+        }
     }
 
-    @Override
-    public Messenger save(FoodDTO foodDTO) {
-        System.out.println("서비스로 전달된 영양소 및 칼로리 정보: "+foodDTO.toString());
-        String result = "";
-        if (foodRepository.findByUsername(foodDTO.).isEmpty()) {
-            List<Role> list = new ArrayList<>();
-            list.add(Role.USER);
-            repository.save(User.builder()
-                    .username(user.getUsername())
-                    .name(user.getName())
-                    .phone(user.getPhone())
-                    .nickname(user.getNickname())
-                    .password(encoder.encode(user.getPassword()))
-                    .weight(user.getWeight())
-                    .height(user.getHeight())
-                    .gender(user.getGender())
-                    .email(user.getEmail())
-                    .roles(list).build());
-            result = "SUCCESS";
-        } else {
-            result = "FAIL";
-        }
-        return Messenger.builder().message(result).build();
+
+
+        public Messenger save(FoodDTO foodDTO) {
+            System.out.println("서비스로 전달된 회원가입 정보: "+foodDTO.toString());
+            result ="";
+
+            foodRepository.save(foodDTO.builder()
+                        .username(foodDTO.getUsername())
+                        .name(foodDTO.getName())
+                        .phone(foodDTO.getPhone())
+                        .nickname(foodDTO.getNickname())
+                        .password(foodDTO.encode(foodDTO.getPassword()))
+                        .weight(foodDTO.getWeight())
+                        .height(foodDTO.getHeight())
+                        .gender(foodDTO.getGender())
+                        .email(foodDTO.getEmail())
+                        .roles(foodDTO).build());
+                result = "SUCCESS";
+            } else {
+                result = "FAIL";
+            }
+            return Messenger.builder().message(result).build();
+        }//회원가입
+
+
+
     }
 
-    @Test
-    public void saveAll_대량_성능_테스트() throws Exception {
-        long start = System.currentTimeMillis();
-        List<Member> members = new ArrayList<>();
-        for (int i = 0 ; i < SIZE ; i++) {
-            Member member = Member.builder()
-                    .age(10)
-                    .name("test")
-                    .telNo("123")
-                    .build();
-            members.add(member);
-        }
-        memberRepository.saveAll(members);
-        System.out.println("elapsed time : "  + (System.currentTimeMillis() - start));
-    }일단..잠을......먼저.......자고..........하.......자....
-     */
 }

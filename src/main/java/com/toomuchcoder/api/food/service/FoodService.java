@@ -4,6 +4,7 @@ import com.toomuchcoder.api.auth.domain.Messenger;
 import com.toomuchcoder.api.food.domain.Food;
 import com.toomuchcoder.api.food.domain.FoodDTO;
 import org.springframework.data.domain.Sort;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -23,4 +24,6 @@ public interface FoodService {
     Messenger deleteAll();
 
     Messenger count();
+
+     <Food> analysisFood (MultipartFile file) throws Exception;
 }

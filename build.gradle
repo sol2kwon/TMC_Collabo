@@ -36,6 +36,8 @@ dependencies {
 	implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
 	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
 	implementation group: 'org.modelmapper', name: 'modelmapper', version: '3.1.0'
+	// https://mvnrepository.com/artifact/org.apache.httpcomponents/httpmime
+	implementation group: 'org.apache.httpcomponents', name: 'httpmime', version: '4.3.4'
 }
 
 tasks.named('test') {

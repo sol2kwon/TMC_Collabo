@@ -86,16 +86,16 @@ public class FoodController {
         return ResponseEntity.status(HttpStatus.CREATED).body(originalFileName);
     }
 
-    @PostMapping(value ="/test/multipart")
-    public ResponseEntity testMultipart(MultipartFile file) throws Exception {
+    @PostMapping(value ="/savemultipart")
+    public ResponseEntity testMultipart(@RequestPart MultipartFile file) throws Exception {
         if (file == null) {
             throw new Exception();
         }
         String line;
-        BufferedReader br = new BufferedReader(new InputStreamReader(file.getInputStream()));
-        while ((line = br.readLine()) != null) {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream()));
+        while ((line = reader.readLine()) != null) {
         }
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(service.analysisFood(file)).build();
     }
 }
