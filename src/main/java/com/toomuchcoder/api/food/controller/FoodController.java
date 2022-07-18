@@ -85,7 +85,7 @@ public class FoodController {
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(originalFileName);
     }
-
+/**
     @PostMapping(value ="/savemultipart")
     public ResponseEntity testMultipart(@RequestPart MultipartFile file) throws Exception {
         if (file == null) {
@@ -98,4 +98,5 @@ public class FoodController {
 
         return ResponseEntity.ok(service.analysisFood(file)).build();
     }
+ */
 }
