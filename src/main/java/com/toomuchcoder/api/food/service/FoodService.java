@@ -25,5 +25,5 @@ public interface FoodService {
 
     Messenger count();
 
-     <Food> analysisFood (MultipartFile file) throws Exception;
+     //<Food> analysisFood (MultipartFile file) throws Exception;
 }

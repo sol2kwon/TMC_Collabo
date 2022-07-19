@@ -47,6 +47,11 @@ public class FoodServiceImpl implements FoodService {
         return null;
     }
 
+    @Override
+    public Messenger save(FoodDTO foodDTO) {
+        return null;
+    }
+
 
     @Override
     public Messenger existsById(String foodid) {
@@ -86,67 +91,8 @@ public class FoodServiceImpl implements FoodService {
         System.out.println("Status Code: " + response.getStatusLine().getStatusCode());
         System.out.println("============================ end =============================");
         httpClient.close();
-
-        public List<>analysisFood (MultipartFile file) throws Exception {
-
-        }
-        @Transactional
-        public void readObject(String storedFileName) throws IOException {
-            S3Object o = amazonS3.getObject(new GetObjectRequest(bucket, storedFileName));
-            S3ObjectInputStream ois = null;
-            BufferedReader br = null;
-
-            // Read the CSV one line at a time and process it.
-            try {
-                ois = o.getObjectContent();
-                System.out.println ("ois = " + ois);
-                br = new BufferedReader (new InputStreamReader(ois, "UTF-8"));
-
-                String line;
-                while ((line = br.readLine()) != null) {
-                    // Store 1 record in an array separated by commas
-                    String[] data = line.split(",", 0);
-
-                    Food food = new Food(data[0], data[1]);
-                    em.persist(food);
-                }
-            } finally {
-                if(ois != null){
-                    ois.close();
-                }
-                if(br != null){
-                    br.close();
-                }
-            }
-        }
-    }
+    }}
+//**}
 
 
 
-        public Messenger save(FoodDTO foodDTO) {
-            System.out.println("서비스로 전달된 회원가입 정보: "+foodDTO.toString());
-            result ="";
-
-            foodRepository.save(foodDTO.builder()
-                        .username(foodDTO.getUsername())
-                        .name(foodDTO.getName())
-                        .phone(foodDTO.getPhone())
-                        .nickname(foodDTO.getNickname())
-                        .password(foodDTO.encode(foodDTO.getPassword()))
-                        .weight(foodDTO.getWeight())
-                        .height(foodDTO.getHeight())
-                        .gender(foodDTO.getGender())
-                        .email(foodDTO.getEmail())
-                        .roles(foodDTO).build());
-                result = "SUCCESS";
-            } else {
-                result = "FAIL";
-            }
-            return Messenger.builder().message(result).build();
-        }//회원가입
-
-
-
-    }
-
-}

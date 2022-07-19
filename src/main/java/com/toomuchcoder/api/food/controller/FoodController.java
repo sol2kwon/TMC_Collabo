@@ -85,6 +85,15 @@ public class FoodController {
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(originalFileName);
     }
+
+    //1. 사용자가 파일 업로드하면 파이썬으로 어떻게 넘겨주는지? 데이터형식과 방법...
+    // - 이미지 업로드하면 스프링이 이미지 주소 화면으로 넘겨줌(파일명)..//우리는 저장안해요! 바로 파이썬 고고
+    // - 프론트에서 이미지 url 파이썬으로 바로 넘겨줌..read_img('url') 이런식으로 하면 될것같음.
+    // - 파이썬에서 이미지 처리해서 프론트로 감.......save_img('new_url') local에서 save 하듯 다시 url에 저장을 하면 프런트가 출력한다.
+    //2. 파이썬이 전달해주는 데이터 to 프런트 : 1)_ bbox 이미지, (음식이름 + 음식성분)
+    //3. 영양소 데이터를 스프링에서 쓰지 않는다면,
+    //        파이썬쪽에 디비를 하나 붙이는게 맞을지? or 파이썬에서 디비에 직접 접근을 하는게 나을지? win
+
 /**
     @PostMapping(value ="/savemultipart")
     public ResponseEntity testMultipart(@RequestPart MultipartFile file) throws Exception {
