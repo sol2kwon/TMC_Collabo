@@ -1,7 +1,10 @@
 package com.toomuchcoder.api.food.domain;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import org.springframework.stereotype.Component;
 
+@Component @Data
 public class FoodDTO {
     @ApiModelProperty(position = 1) private long foodid;
     @ApiModelProperty(position = 2) String foodname;

@@ -4,8 +4,6 @@ import com.toomuchcoder.api.auth.domain.Messenger;
 import com.toomuchcoder.api.food.domain.Food;
 import com.toomuchcoder.api.food.domain.FoodDTO;
 import com.toomuchcoder.api.food.repositorie.FoodRepository;
-import com.toomuchcoder.api.user.domain.Role;
-import com.toomuchcoder.api.user.domain.User;
 import com.toomuchcoder.api.user.domain.UserDTO;
 import lombok.RequiredArgsConstructor;
 import org.apache.http.HttpEntity;
@@ -20,7 +18,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -34,6 +31,11 @@ public class FoodServiceImpl implements FoodService {
 
     @Override
     public List<Food> findAll() {
+        return null;
+    }
+
+    @Override
+    public List<Food> findAllFood() {
         return null;
     }
 
@@ -64,7 +66,8 @@ public class FoodServiceImpl implements FoodService {
     }
 
     @Override
-    public Messenger count() {
+    public Messenger chartList(FoodDTO foodDTO) {
+        if (foodRepository.findByFoodname(foodDTO.getFoodname()).equals())
         return null;
     }
 

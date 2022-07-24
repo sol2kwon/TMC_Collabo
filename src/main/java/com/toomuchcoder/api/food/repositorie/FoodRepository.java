@@ -4,6 +4,8 @@ import com.toomuchcoder.api.food.domain.Food;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 interface  FoodCustomeReposittory{
     /**
      @Query(value="update Comment c set c.comment = :comment  where c.commentid = :postid",
@@ -15,4 +17,5 @@ interface  FoodCustomeReposittory{
 }
 @Repository
 public interface FoodRepository extends JpaRepository<Food, Long> {
+     Optional<Food> findByFoodname(String foodname);
 }

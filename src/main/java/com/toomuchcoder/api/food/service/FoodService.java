@@ -13,6 +13,8 @@ public interface FoodService {
 
     List<Food> findAll();
 
+    List<Food> findAllFood();
+
     Messenger update(FoodDTO foodDTO);
 
     Messenger delete(FoodDTO foodDTO);
@@ -23,7 +25,7 @@ public interface FoodService {
 
     Messenger deleteAll();
 
-    Messenger count();
+    Messenger chartList();
 
      //<Food> analysisFood (MultipartFile file) throws Exception;
 }

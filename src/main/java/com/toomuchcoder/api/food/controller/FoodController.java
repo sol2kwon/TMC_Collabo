@@ -40,13 +40,6 @@ public class FoodController {
         return ResponseEntity.ok(service.findAll(sort));
     }
 
-
-    @GetMapping("/count")
-    public ResponseEntity<Messenger> count() {
-        return ResponseEntity.ok(service.count());
-    }
-
-
     @PatchMapping(value = "/update") @ResponseBody
     public ResponseEntity<Messenger> update(@RequestBody FoodDTO foodDTO){
         return ResponseEntity.ok(service.update(foodDTO));
@@ -84,7 +77,19 @@ public class FoodController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(originalFileName);
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(originalFileName);
+
+    }//저장까지 구현해보기//화면에 주소도 보여주기.
+    @GetMapping("/chartList")@ResponseBody
+    public ResponseEntity<Messenger> chartList(@RequestBody FoodDTO foodDTO) {
+        return ResponseEntity.ok(service.chartList());
     }
+
+/**
+    @GetMapping("/api/chart")
+    public ResponseEntity<List<Food>> findAllFood() {
+        return service.findAll();
+    }
+ */
 
     //1. 사용자가 파일 업로드하면 파이썬으로 어떻게 넘겨주는지? 데이터형식과 방법...
     // - 이미지 업로드하면 스프링이 이미지 주소 화면으로 넘겨줌(파일명)..//우리는 저장안해요! 바로 파이썬 고고
