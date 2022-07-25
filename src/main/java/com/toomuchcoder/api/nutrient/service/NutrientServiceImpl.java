@@ -5,6 +5,7 @@ import com.toomuchcoder.api.auth.domain.Messenger;
 import com.toomuchcoder.api.nutrient.domain.Nutrient;
 import com.toomuchcoder.api.nutrient.domain.NutrientDTO;
 import com.toomuchcoder.api.nutrient.repositorie.NutrientRepository;
+import com.toomuchcoder.api.user.repositorie.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class NutrientServiceImpl implements NutrientService {
     private final NutrientRepository nutrientRepository;
+    private final UserRepository userRepository;
 
     @Override
     public List<Nutrient> findAll(Sort sort) {
@@ -74,6 +76,10 @@ public class NutrientServiceImpl implements NutrientService {
 
     @Override
     public List<Nutrient> getChart() {
+        //쿼리작성하기
+
+
+
 
 
         return null;
