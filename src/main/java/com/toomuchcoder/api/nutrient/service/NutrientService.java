@@ -34,4 +34,6 @@ public interface NutrientService {
     Messenger deleteAll();
 
     Messenger count();
+
+    List<Nutrient>getChart();
 }

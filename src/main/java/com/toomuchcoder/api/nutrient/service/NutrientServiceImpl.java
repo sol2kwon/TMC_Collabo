@@ -66,4 +66,16 @@ public class NutrientServiceImpl implements NutrientService {
     public Messenger count() {
         return null;
     }
+
+    /**
+     * ‘체중×24×활동계수=하루 섭취량’ /3
+     * 파생데이터는 dto에서 불러오기? 저장해야함
+     * */
+
+    @Override
+    public List<Nutrient> getChart() {
+
+
+        return null;
+    }
 }

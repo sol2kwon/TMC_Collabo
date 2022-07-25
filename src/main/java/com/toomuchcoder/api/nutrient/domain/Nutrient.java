@@ -32,18 +32,17 @@ public class Nutrient {
     @GeneratedValue private Long nutrientid;
     @Column private String userkcal;
     @Column private String usercarbo;
-    @Column private String userprotein;
+    @Column private String usersugar;
     @Column private String userfat;
+    @Column private String userprotein;
     @Column private String usercalcium;
     @Column private String userphosphorus ;
     @Column private String usersalt;
     @Column private String userpotassium;
     @Column private String userpagnesium;
 
-    @OneToOne
-    @JoinColumn
+    @OneToOne(mappedBy = "nutrient")
     public User user;
-
 
 
 }
