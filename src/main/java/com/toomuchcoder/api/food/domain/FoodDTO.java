@@ -17,5 +17,6 @@ public class FoodDTO {
     @ApiModelProperty(position = 9) String salt ;
     @ApiModelProperty(position = 10) String potassium  ;
     @ApiModelProperty(position = 11) String pagnesium  ;
-    @ApiModelProperty(position = 12) String date;
+    @ApiModelProperty(position = 12) String sugar  ;
+    @ApiModelProperty(position = 13) String date;
 }

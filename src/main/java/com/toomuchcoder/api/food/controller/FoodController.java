@@ -28,11 +28,12 @@ public class FoodController {
     private final FoodService service;
 
 
-
+/**
     @GetMapping("/findAll")
     public ResponseEntity<List<Food>> findAll() {
         return ResponseEntity.ok(service.findAll());
     }
+ */
 
     @GetMapping("/findAll/sort")
     public ResponseEntity<List<Food>> findAll(Sort sort) {
@@ -56,9 +57,9 @@ public class FoodController {
         return ResponseEntity.ok(service.deleteAll());
     }
 
-    @PostMapping("/food")
-    public ResponseEntity<Messenger> save(@ApiParam("food save")@RequestBody FoodDTO foodDTO) {
-        System.out.println("food save:"+foodDTO.toString());//확인하고 지우기.
+    @PostMapping("/foodchart")
+    public ResponseEntity<Messenger> save(@ApiParam("userfood save")@RequestBody FoodDTO foodDTO) {
+        System.out.println("userfood save:"+foodDTO.toString());//확인하고 지우기.
         return ResponseEntity.ok(service.save(foodDTO));
     }
 
@@ -79,10 +80,8 @@ public class FoodController {
         return ResponseEntity.status(HttpStatus.CREATED).body(originalFileName);
 
     }//저장까지 구현해보기//화면에 주소도 보여주기.
-    @GetMapping("/chartList")@ResponseBody
-    public ResponseEntity<Messenger> chartList(@RequestBody FoodDTO foodDTO) {
-        return ResponseEntity.ok(service.chartList());
-    }
+
+
 
 /**
     @GetMapping("/api/chart")

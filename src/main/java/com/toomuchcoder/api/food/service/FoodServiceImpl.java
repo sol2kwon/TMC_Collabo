@@ -49,9 +49,17 @@ public class FoodServiceImpl implements FoodService {
         return null;
     }
 
+
     @Override
     public Messenger save(FoodDTO foodDTO) {
-        return null;
+        System.out.println("user 음식정보 저장: "+foodDTO.toString());
+        foodRepository.save(Food.builder().foodname(foodDTO.getFoodname())
+                .kcal(foodDTO.getKcal()).carbohydrate(foodDTO.getCarbohydrate())
+                .sugar(foodDTO.getSugar()).fat(foodDTO.getFat()).protein(foodDTO.getProtein())
+                .calcium(foodDTO.getCalcium()).phosphorus(foodDTO.getPhosphorus())
+                .salt(foodDTO.getSalt()).potassium(foodDTO.getPotassium())
+                .pagnesium(foodDTO.getPagnesium()).date(foodDTO.getDate()).build());
+        return Messenger.builder().message("음식정보 저장되었습니다.").build();
     }
 
 
@@ -65,11 +73,6 @@ public class FoodServiceImpl implements FoodService {
         return null;
     }
 
-    @Override
-    public Messenger chartList(FoodDTO foodDTO) {
-        if (foodRepository.findByFoodname(foodDTO.getFoodname()).equals())
-        return null;
-    }
 
 
     public void analysisFood (MultipartFile file) throws Exception {
