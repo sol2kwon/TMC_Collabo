@@ -39,6 +39,8 @@ public interface UserService {
 
     Optional<User> findByToken(UserDTO user);
 
+    Optional<User> findByWeight(UserDTO user);
+
     Messenger existsById(String userid);
 
     UserDTO login(UserDTO paramUser);

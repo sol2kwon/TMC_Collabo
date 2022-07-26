@@ -36,8 +36,8 @@ public class User {
     @Column private @NotNull String email;
     @Column (unique = true) private @NotNull String name;
     @Column private @NotNull String phone;
-    @Column private  String weight;
-    @Column private  String height;
+    @Column private  float weight;
+    @Column private  float height;
     @Column private  String gender;//Boolean 받아야함
 
     //@Column private @NotNull String date;

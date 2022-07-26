@@ -39,10 +39,12 @@ String findUsername(@Param("name") String name, @Param("phone") String phone);
 
 }
 @Repository
-public interface UserRepository extends JpaRepository<User,Long> {
+public interface UserRepository extends JpaRepository<User,Long>,UserCustomRepository {
     Optional<User> findByUsername(String username);
     //Messenger update(User user);
     Optional<User> findByToken(String token);
+
+    Optional<User> findByWeight(String weight);
 
     boolean existsByPhone(String phone);
     boolean existsByUsername(String username);
@@ -51,6 +53,7 @@ public interface UserRepository extends JpaRepository<User,Long> {
     boolean existsByGender(String gender);
     boolean existsByHeight(String height);
     boolean existsByWeight(String weight);
+
 
 
 }

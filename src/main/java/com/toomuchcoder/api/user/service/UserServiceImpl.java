@@ -135,6 +135,11 @@ public class UserServiceImpl implements UserService {
     }//유저의 토큰 찾기
 
     @Override
+    public Optional<User> findByWeight(UserDTO user){
+        return repository.findByWeight(user.getWeight());
+    }
+
+    @Override
     public Messenger existsById(String userid) {
         return repository.existsById(longParse(userid))
                 ? Messenger.builder().message("EXIST").build()
